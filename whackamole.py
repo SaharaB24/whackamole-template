@@ -2,6 +2,9 @@ import pygame
 
 
 def main():
+
+    #code for git pull demo
+    print("this is for the git pull demo")
     try:
         pygame.init()
         # You can draw the mole with this snippet:
