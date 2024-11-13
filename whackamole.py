@@ -2,6 +2,9 @@ import pygame
 
 
 def main():
+    #adding cod eto show functionality of git add, commit, and push
+    print('hi')
+
     try:
         pygame.init()
         # You can draw the mole with this snippet:
@@ -12,6 +15,7 @@ def main():
         running = True
         while running:
             for event in pygame.event.get():
+                #if you hit the x button to close the window it closes/stops running
                 if event.type == pygame.QUIT:
                     running = False
             screen.fill("light green")
