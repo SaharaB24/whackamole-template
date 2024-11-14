@@ -11,7 +11,6 @@ def main():
     try:
         pygame.init()
         # You can draw the mole with this snippet:
-        # screen.blit(mole_image, mole_image.get_rect(topleft=(x,y)))
         mole_image = pygame.image.load("mole.png")
         screen = pygame.display.set_mode((640, 512))
         clock = pygame.time.Clock()
@@ -22,6 +21,15 @@ def main():
                 if event.type == pygame.QUIT:
                     running = False
             screen.fill("light green")
+            #nest for loop 32 times for 32 lines
+            #640/32 = 20
+            #512/32 = 16
+            for i in range(20): #values 0 - 15 so 16 times  #horizontal lines
+                pygame.draw.line(screen, (74, 4, 92), (0, 32*i), (640, 32*i))
+                for j in range(16): #vertical lines
+                    pygame.draw.line(screen, (74, 4, 92), (32*i, 0 ), (32*i, 512))
+            screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
+
             pygame.display.flip()
             clock.tick(60)
     finally:
