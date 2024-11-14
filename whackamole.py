@@ -26,6 +26,7 @@ def main():
                 pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
         screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
         while running:
+            # screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
 
             #moved below to show up
             for event in pygame.event.get():
@@ -35,12 +36,18 @@ def main():
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     # event.pos = pygame.mouse.get_pos()
                     # x,y = pygame.mouse.get_pos()
-                    x = (random.randrange(0, 20))*32
-                    y = (random.randrange(0, 16))*32
+                    x = (random.randrange(0, 20))*32 + 3
+                    y = (random.randrange(0, 16))*32 + 4
                     # mole_image = (x,y)
+                    screen.fill("light green")
+                    for i in range(20):  # values 0 - 15 so 16 times  #horizontal lines
+                        pygame.draw.line(screen, (74, 4, 92), (0, 32 * i), (640, 32 * i))
+                        for j in range(16):  # vertical lines
+                            pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
                     screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
 
-            #moving the mole around when clicked:
+
+                                             #moving the mole around when clicked:
             # for event in pygame.event.get():
                 # if event.type == pygame.MOUSEBUTTONDOWN:
                 #     # event.pos = pygame.mouse.get_pos()
