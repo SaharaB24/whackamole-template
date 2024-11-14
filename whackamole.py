@@ -17,10 +17,6 @@ def main():
         clock = pygame.time.Clock()
         running = True
         while running:
-            for event in pygame.event.get():
-                #if you hit the x button to close the window it closes/stops running
-                if event.type == pygame.QUIT:
-                    running = False
             screen.fill("light green")
             #nest for loop 32 times for 32 lines
             #640/32 = 20
@@ -30,6 +26,28 @@ def main():
                 for j in range(16): #vertical lines
                     pygame.draw.line(screen, (74, 4, 92), (32*i, 0 ), (32*i, 512))
             screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
+            #moved below to show up
+            for event in pygame.event.get():
+                #if you hit the x button to close the window it closes/stops running
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    # event.pos = pygame.mouse.get_pos()
+                    # x,y = pygame.mouse.get_pos()
+                    x = (random.randrange(0, 20))*32
+                    y = (random.randrange(0, 16))*32
+                    # mole_image = (x,y)
+                    screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
+
+            #moving the mole around when clicked:
+            # for event in pygame.event.get():
+                # if event.type == pygame.MOUSEBUTTONDOWN:
+                #     # event.pos = pygame.mouse.get_pos()
+                #     # x,y = pygame.mouse.get_pos()
+                #     x = (random.randint(0, 20))*32
+                #     y = (random.randint(0, 16))*32
+                #     # mole_image = (x,y)
+                #     screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
 
             pygame.display.flip()
             clock.tick(60)
