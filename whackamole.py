@@ -19,7 +19,11 @@ def main():
             pygame.draw.line(screen, (74, 4, 92), (0, 32 * i), (640, 32 * i))
             for j in range(16):  # vertical lines
                 pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
+        #initial position of mole
+        mole_rect = mole_image.get_rect(topleft = (3, 4))
         screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
+
+
         while running:
 
             #moved below to show up
@@ -28,17 +32,19 @@ def main():
                 if event.type == pygame.QUIT:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    # event.pos = pygame.mouse.get_pos()
-                    # x,y = pygame.mouse.get_pos()
-                    x = (random.randrange(0, 20))*32 + 3
-                    y = (random.randrange(0, 16))*32 + 4
-                    # mole_image = (x,y)
-                    screen.fill("light green")
-                    for i in range(20):  # values 0 - 15 so 16 times  #horizontal lines
-                        pygame.draw.line(screen, (74, 4, 92), (0, 32 * i), (640, 32 * i))
-                        for j in range(16):  # vertical lines
-                            pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
-                    screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
+                    #check if click is on the mole
+                    if mole_rect.collidepoint(event.pos):
+                        x = (random.randrange(0, 20))*32 + 3
+                        y = (random.randrange(0, 16))*32 + 4
+                        # mole_image = (x,y)
+                        mole_rect.topleft = (x, y)
+                        screen.fill("light green")
+                        for i in range(20):  # values 0 - 15 so 16 times  #horizontal lines
+                            pygame.draw.line(screen, (74, 4, 92), (0, 32 * i), (640, 32 * i))
+                            for j in range(16):  # vertical lines
+                                pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
+                        # screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
+                        screen.blit(mole_image, mole_rect)
 
             pygame.display.flip()
             clock.tick(60)
