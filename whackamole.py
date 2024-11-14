@@ -3,12 +3,7 @@ import random
 
 
 def main():
-    # #adding cod eto show functionality of git add, commit, and push
-    # print('hi')
-    #
-    #
-    # #code for git pull demo
-    # print("this is for the git pull demo")
+
     try:
         pygame.init()
         # You can draw the mole with this snippet:
@@ -26,7 +21,6 @@ def main():
                 pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
         screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
         while running:
-            # screen.blit(mole_image, mole_image.get_rect(topleft=(3, 4)))
 
             #moved below to show up
             for event in pygame.event.get():
@@ -45,17 +39,6 @@ def main():
                         for j in range(16):  # vertical lines
                             pygame.draw.line(screen, (74, 4, 92), (32 * i, 0), (32 * i, 512))
                     screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
-
-
-                                             #moving the mole around when clicked:
-            # for event in pygame.event.get():
-                # if event.type == pygame.MOUSEBUTTONDOWN:
-                #     # event.pos = pygame.mouse.get_pos()
-                #     # x,y = pygame.mouse.get_pos()
-                #     x = (random.randint(0, 20))*32
-                #     y = (random.randint(0, 16))*32
-                #     # mole_image = (x,y)
-                #     screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
 
             pygame.display.flip()
             clock.tick(60)
