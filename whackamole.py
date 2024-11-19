@@ -46,6 +46,9 @@ def main():
                         # screen.blit(mole_image, mole_image.get_rect(topleft=(x, y)))
                         screen.blit(mole_image, mole_rect)
 
+
+                        #practice with github
+
             pygame.display.flip()
             clock.tick(60)
     finally:
